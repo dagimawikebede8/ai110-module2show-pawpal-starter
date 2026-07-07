@@ -3,13 +3,13 @@ from dataclasses import dataclass, field
 
 @dataclass
 class Task:
-    title: str
-    task_type: str
+    description: str
     time: str
-    priority: int
+    frequency: str
     completed: bool = False
 
     def mark_complete(self):
+        """Mark the task as completed."""
         self.completed = True
 
 
@@ -17,11 +17,15 @@ class Task:
 class Pet:
     name: str
     species: str
-    age: int
     tasks: list = field(default_factory=list)
 
     def add_task(self, task):
+        """Add a care task to this pet."""
         self.tasks.append(task)
+
+    def get_tasks(self):
+        """Return all tasks for this pet."""
+        return self.tasks
 
 
 @dataclass
@@ -30,22 +34,23 @@ class Owner:
     pets: list = field(default_factory=list)
 
     def add_pet(self, pet):
+        """Add a pet to this owner."""
         self.pets.append(pet)
 
-    def get_pets(self):
-        return self.pets
+    def get_all_tasks(self):
+        """Return all tasks from all pets."""
+        all_tasks = []
+        for pet in self.pets:
+            for task in pet.tasks:
+                all_tasks.append((pet, task))
+        return all_tasks
 
 
 class Scheduler:
-    def __init__(self):
-        self.tasks = []
+    def __init__(self, owner):
+        """Create a scheduler for one owner."""
+        self.owner = owner
 
-    def schedule_task(self, pet, task):
-        pet.add_task(task)
-        self.tasks.append(task)
-
-    def get_today_tasks(self):
-        return self.tasks
-
-    def sort_tasks_by_priority(self):
-        return sorted(self.tasks, key=lambda task: task.priority)
+    def get_todays_schedule(self):
+        """Return all tasks sorted by time."""
+        return sorted(self.owner.get_all_tasks(), key=lambda item: item[1].time)
