@@ -68,16 +68,15 @@ Sample test output:
 # Paste your pytest output here
 ```
 
-## 📐 Smarter Scheduling
-
-> Fill in once you've implemented scheduling logic.
+### 📐 Smarter Scheduling
 
 | Feature | Method(s) | Notes |
 |---------|-----------|-------|
-| Task sorting | | e.g., by priority, duration |
-| Filtering | | e.g., skip tasks if time runs out |
-| Conflict handling | | e.g., overlapping time slots |
-| Recurring tasks | | e.g., daily vs. weekly |
+| Task sorting | `Scheduler.sort_by_time()` | Sorts tasks by their `HH:MM` time value. |
+| Filtering by pet | `Scheduler.filter_by_pet()` | Shows only tasks for a selected pet. |
+| Filtering by status | `Scheduler.filter_by_status()` | Shows completed or incomplete tasks. |
+| Conflict detection | `Scheduler.detect_conflicts()` | Warns when two tasks share the same exact time. |
+| Recurring tasks | `Scheduler.mark_task_complete()` | Creates the next daily or weekly task after completion. |
 
 ## 📸 Demo Walkthrough
 
