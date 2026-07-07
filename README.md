@@ -88,12 +88,40 @@ I am fairly confident because the main class behaviors and scheduling algorithms
 
 ## 📸 Demo Walkthrough
 
-Describe your app in numbered steps so a reader can follow along without watching a video:
+PawPal+ allows a user to enter owner information, add pets, add care tasks, and view a daily schedule. The app uses the backend `Scheduler` class to sort tasks by time and warn the user when two tasks are scheduled at the same time.
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+Example workflow:
+
+1. Enter the owner name.
+2. Add a pet with a name and species.
+3. Add a task for that pet with a description, time, and frequency.
+4. View the generated schedule under "Today's Schedule."
+5. If two tasks happen at the same time, the app displays a conflict warning.
+
+Sample CLI output from `main.py`:
+
+```text
+Today's Schedule
+----------------
+08:00 - Buddy (Dog): Morning walk [Daily] - Not Done
+09:00 - Buddy (Dog): Feed breakfast [Daily] - Not Done
+09:00 - Milo (Cat): Feed breakfast [Daily] - Not Done
+10:30 - Milo (Cat): Clean litter box [Daily] - Not Done
+
+Tasks for Buddy
+---------------
+09:00 - Buddy: Feed breakfast
+08:00 - Buddy: Morning walk
+
+Incomplete Tasks
+----------------
+09:00 - Buddy: Feed breakfast
+08:00 - Buddy: Morning walk
+10:30 - Milo: Clean litter box
+09:00 - Milo: Feed breakfast
+
+Conflicts
+---------
+Conflict at 09:00: Buddy's Feed breakfast and Milo's Feed breakfast
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->

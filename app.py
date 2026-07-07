@@ -65,13 +65,29 @@ st.subheader("Today's Schedule")
 
 scheduler = Scheduler(st.session_state.owner)
 schedule = scheduler.get_todays_schedule()
+conflicts = scheduler.detect_conflicts()
+
+if conflicts:
+    st.warning("Task conflict detected!")
+    for conflict in conflicts:
+        st.write(conflict)
 
 if schedule:
+    schedule_rows = []
+
     for pet, task in schedule:
         status = "Done" if task.completed else "Not Done"
-        st.write(
-            f"{task.time} - {pet.name} ({pet.species}): "
-            f"{task.description} [{task.frequency}] - {status}"
+        schedule_rows.append(
+            {
+                "Time": task.time,
+                "Pet": pet.name,
+                "Species": pet.species,
+                "Task": task.description,
+                "Frequency": task.frequency,
+                "Status": status,
+            }
         )
+
+    st.table(schedule_rows)
 else:
     st.info("No tasks scheduled yet.")
