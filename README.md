@@ -52,23 +52,31 @@ Today's Schedule
 10:30 - Milo (Cat): Clean litter box [Daily] - Not Done
 ```
 
-## 🧪 Testing PawPal+
+## Testing PawPal+
+
+To run the automated tests:
 
 ```bash
-# Run the full test suite:
-pytest
-
-# Run with coverage:
-pytest --cov
+python3 -m pytest
 ```
 
-Sample test output:
+The tests verify task completion, task addition, schedule sorting, daily recurrence, and conflict detection.
 
-```
-# Paste your pytest output here
+Successful test output:
+
+```text
+============================= test session starts ==============================
+collected 5 items
+
+tests/test_pawpal.py .....                                            [100%]
+
+============================== 5 passed in 0.01s ===============================
 ```
 
-### 📐 Smarter Scheduling
+Confidence Level: ⭐⭐⭐⭐☆  
+I am fairly confident because the main class behaviors and scheduling algorithms pass automated tests, but more edge cases could still be added later.
+
+## 📐 Smarter Scheduling
 
 | Feature | Method(s) | Notes |
 |---------|-----------|-------|
